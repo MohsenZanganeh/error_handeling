@@ -1,10 +1,10 @@
 const { Mongoose } = require("mongoose");
 
 let mongoose=require("mongoose")
-let user=mongoose.Schema("user",{
+let user=mongoose.Schema({
     name:{
         type:String,
-        trim:true
+        trim:true 
     },
     username:{
         type:String,

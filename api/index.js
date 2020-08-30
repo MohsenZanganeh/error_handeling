@@ -1,24 +1,28 @@
-let express=require("express")
-let body_parser=require("body-parser")
+let express = require("express")
+let body_parser = require("body-parser")
+let { setup } = require("./db/models/index")
+let app = express()
 
-let app=express()
-
-class Application{
-    constructor(){
-        this.setupServer();
+class Application {
+    constructor() {
+        this.setupDatabase()
         this.setupRoutes();
         this.setupConfig();
+        this.setupServer();
     }
-    setupServer(){
+    setupDatabase() {
+        setup()
+    }
+    setupServer() {
         app.listen(process.env.PORT,
             console.log(`Connect To Server .......... ${process.env.PORT}`))
     }
-    setupConfig(){
-        app.use(body_parser.urlencoded({extended:true}))
+    setupConfig() {
+        app.use(body_parser.urlencoded({ extended: true }))
         app.use(body_parser.json())
     }
-    setupRoutes(){
-        
+    setupRoutes() {
+
     }
 }
-module.exports=Application
+module.exports = Application

@@ -5,12 +5,14 @@ services:
         image: "node_test"
         container_name: "node_test"
         command: npm start
-        depends_on: "mongo"
+        depends_on:
+            - "mongo"
         environment: 
             - "PORT=3000"
-        ports: "3000:3000"
+        ports:
+            - "3000:3000"
         volumes: 
-            - "./:./app"
+            - "./:/app"
     mongo:
         image: "mongo"
         container_name: "mongo"
