@@ -1,14 +1,15 @@
 let express = require("express")
 let body_parser = require("body-parser")
 let { setup } = require("./db/models/index")
+let {container} =require("../awilix")
 let app = express()
 
 class Application {
     constructor() {
-        this.setupDatabase()
-        this.setupRoutes();
-        this.setupConfig();
-        this.setupServer();
+      this.setupDatabase()
+      this.setupConfig();
+      this.setupRoutes();
+      this.setupServer();
     }
     setupDatabase() {
         setup()
@@ -22,7 +23,11 @@ class Application {
         app.use(body_parser.json())
     }
     setupRoutes() {
-
+        app.get('/',(req,res)=>{
+            console.log("Hello World.......")
+            res.send("Hello World.....")
+        })
+        app.use(require("../api/Routes/Router_loader"))
     }
 }
 module.exports = Application
