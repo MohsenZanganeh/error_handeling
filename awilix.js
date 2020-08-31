@@ -22,9 +22,14 @@ class User_Services {
         return roter_user
     }
 }
+function GenericRepository(){
+    let genericrepository=require("./api/db/repository/Generic_Repository")
+    return new genericrepository
+}
 function setup() {
     container.register({
-        User_Services: awilix.asClass(User_Services)
+        User_Services: awilix.asClass(User_Services),
+        GenericRepository: awilix.asFunction(GenericRepository)
     })
     
 
