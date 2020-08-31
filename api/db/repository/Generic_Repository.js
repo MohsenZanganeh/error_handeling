@@ -2,20 +2,20 @@ class Generic_Repository{
     constructor(_model){
         this.model=_model
     }
-    async Insert(){
-        let newData = this.SetDateNow(Data)
-        let newModel = new this.model(newData)
+    async Insert(Data){
+        //let newData = this.SetDateNow(Data)
+        let newModel = new this.model(Data)
         await newModel.save()
         return status.OK
     }
-    SetDateNow(Data) {
-        let DateNow = Date.get_DateNow()
-        Data.update_at = DateNow
-        if (!Data.created_at) {
-            Data.created_at = DateNow
-        }
-        return Data
-    }
+    // SetDateNow(Data) {
+    //     let DateNow = Date.No
+    //     Data.update_at = DateNow
+    //     if (!Data.created_at) {
+    //         Data.created_at = DateNow
+    //     }
+    //     return Data
+    // }
     async delete(){
         let result = await this.model.deleteOne(Condiation)
         if (result.ok > 0) {
@@ -43,6 +43,9 @@ class Generic_Repository{
         else {
             return status.NO_CONTENT
         }
+    }
+    setModel(model){
+        this.model=model
     }
 }
 

@@ -1,32 +1,36 @@
-let { container } = require("../../../awilix")
-
+let bind=require("auto-bind")
 class Controller_User {
+    constructor({user_service,user_validator}){
+        bind(this)
+        this.user_validator=user_validator
+        this.user_service=user_service
+    }
     register_user(req, res) {
-        let result = container.cradle.User_Services.validator().register_user(req, res)
+        let result = this.user_validator.register_user(req, res)
         if (result) {
-            let user = container.cradle.User_Services.services.register_user(result)
+            let user = this.user_service.register_user(result)
             return user;
         }
     }
 
     delete_user(req, res) {
-        let result = container.cradle.User_Services.validator().delete_user(req, res)
+        let result = this.user_validator.delete_user(req, res)
         if (result) {
-            let user = container.cradle.User_Services.services.delete_user(result)
+            let user = this.user_service.delete_user(result)
             return user;
         }
     }
     update_user(req, res) {
-        let result = container.cradle.User_Services.validator().update_user(req, res)
+        let result = this.user_validator.update_user(req, res)
         if (result) {
-            let user = container.cradle.User_Services.services.update_user(result)
+            let user = this.user_service.update_user(result)
             return user;
         }
     }
     getall_user(req, res) {
-        let result = container.cradle.User_Services.validator().getall_user(req, res)
+        let result = this.user_validator.getall_user(req, res)
         if (result) {
-            let user = container.cradle.User_Services.services.getall_user(result)
+            let user = this.user_service.getall_user(result)
             return user;
         }
     }

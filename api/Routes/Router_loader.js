@@ -1,6 +1,10 @@
-let express=require("express")
-let router=express()
-let {container}=require("../../awilix")
-router.use(container.cradle.User_Services.roter())
+let express = require("express")
+let router = express()
 
-module.exports=router
+
+
+module.exports = ({ roter_user }) => {
+    console.log("roter_user -----------------------")
+    router.use(roter_user)
+    return router
+}

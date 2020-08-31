@@ -3,6 +3,7 @@ let bind=require("auto-bind")
 
 class validator_user{
     constructor(){
+        console.log("validator -----------------------")
         bind(this)
     }
     register_user(req,res){
@@ -15,6 +16,7 @@ class validator_user{
             required: [ "username", "password","name" ]
         }
         let result=this.Validate(req,res,register_user_schema)
+        console.log("result:",result)
         return result;
     }
     delete_user(req,res){
@@ -56,12 +58,12 @@ class validator_user{
         try{
             let ajv=new Ajv()
             let validate=ajv.compile(schema)
-            let valid=validate(res)
+            let valid=validate(req.body)
              if (!valid) {
                     res.send(validate.errors)
                     return false
                 }
-            return valid
+            return req.body
         }
         catch(err){
             console.log("err:",err)

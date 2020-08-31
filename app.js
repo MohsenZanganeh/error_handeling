@@ -1,7 +1,8 @@
 require("dotenv").config()
 
-let {setup}=require("./awilix")
+let { setup, container } = require("./awilix")
 setup()
 
-let app=require("./api/index")
-new app
+console.log('this is my container', container);
+
+container.resolve('app')
