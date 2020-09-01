@@ -3,8 +3,10 @@ openapi: 3.0.0
 info:
   title: first swagger
   version: 1.0.0
-  
+
 host: localhost:3000
+schemes:
+  - http
 basePath: /
 consumes:
   - application/json
@@ -14,17 +16,75 @@ produces:
 paths: 
   /register:
     post:
-      summary: Returns
-      description: Optional
-      content:
-         schema:
-          type: object
-          properties:
-            usename:
-              type: integer
-              format: json
-              example: "aaaaaaaaaa252528525"
-            name:
-              type: string
-              format: json
-              example: "aaaaaaaaaaaaa"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string 
+                password:
+                  type: string 
+                name:
+                  type: string
+              required:
+                - name
+                - username
+                - password   
+      responses:
+        201:
+          description: user was correctly            
+  /delete:
+    delete:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string 
+              required:
+                - id
+        responses:
+          204:
+            description: user deleted              
+  /update:
+    put:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:  
+                id:
+                  type: string
+                username:
+                  type: string
+                password: 
+                  type: string
+                name:
+                  type: string
+      responses:    
+        211:
+         description: get All user                     
+  /getall:
+    get:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string 
+      responses:
+        210:
+          description: get All user                    
+      
