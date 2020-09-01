@@ -4,11 +4,12 @@ let { setup } = require("./db/models/index")
 let app = express()
 
 class Application {
-    constructor() {
-        this.setupDatabase()
-        this.setupRoutes();
-        this.setupConfig();
-        this.setupServer();
+    constructor({loader_router}) {
+      this.loader_router=loader_router
+      this.setupDatabase()
+      this.setupConfig();
+      this.setupRoutes();
+      this.setupServer();
     }
     setupDatabase() {
         setup()
@@ -22,7 +23,11 @@ class Application {
         app.use(body_parser.json())
     }
     setupRoutes() {
-
+        app.get('/',(req,res)=>{
+            res.send("Hello World.....")
+        })
+        app.use(this.loader_router)
+        
     }
 }
 module.exports = Application
