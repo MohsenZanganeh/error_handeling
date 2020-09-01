@@ -1,8 +1,8 @@
 class Generic_Repository{
-    constructor(_model){
-        this.model=_model
+    constructor(){
+        this.model=undefined
     }
-    async Insert(Data){
+    async Insert(Data, model){
         //let newData = this.SetDateNow(Data)
         let newModel = new this.model(Data)
         await newModel.save()
@@ -16,23 +16,23 @@ class Generic_Repository{
     //     }
     //     return Data
     // }
-    async delete(){
-        let result = await this.model.deleteOne(Condiation)
+    async delete(Condition){
+        let result = await this.model.deleteOne({_id:Condition.id})
         if (result.ok > 0) {
-            return status.OK
+            return "status.OK"
         }
         else {
-            return status.NO_CONTENT
+            return "status.NO_CONTENT"
         }
     }
-    async update(){
+    async update(Condition,Data){
         delete Data.id
-        let result = await this.model.updateOne(Condition, { $set: Data })
+        let result = await this.model.updateOne({_id:Condition.id}, { $set: Data })
         if (result.n > 0) {
-            return status.OK
+            return "status.OK"
         }
         else {
-            return status.NO_CONTENT
+            return "status.NO_CONTENT"
         }
     }
     async find(Condition={}){
@@ -41,12 +41,14 @@ class Generic_Repository{
             return result
         }
         else {
-            return status.NO_CONTENT
+            return "status.NO_CONTENT"
         }
     }
     setModel(model){
         this.model=model
     }
+
+    
 }
 
 module.exports=Generic_Repository

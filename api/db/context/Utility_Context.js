@@ -1,11 +1,12 @@
-let {user} = require("../models/index")
+let { user } = require("../models/index")
 class Utility_Context {
-    constructor({GenericRepository}) {
+    constructor({ GenericRepository }) {
         this.GenericRepository = GenericRepository
+        this.user = new this.GenericRepository
     }
-   user() {
-       this.user = this.GenericRepository(user)
-       return this.user
+    User() {
+        this.user.setModel(user)
+        return this.user
     }
 }
 module.exports = Utility_Context

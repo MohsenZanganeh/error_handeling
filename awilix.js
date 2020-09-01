@@ -7,7 +7,6 @@ let user_validator = require("./api/services/User/validator-user")
 let roter_user = require("./api/services/User/roter-user")
 let loader_router = require("./api/Routes/Router_loader")
 let app=require("./api/index");
-const { model } = require('./api/db/models/User');
 const container = awilix.createContainer({
     injectionMode: awilix.InjectionMode.PROXY
 })
@@ -21,7 +20,7 @@ function setup() {
         UtilityContext: awilix.asClass(Utility_Context),
         roter_user: awilix.asFunction(roter_user),
         loader_router: awilix.asFunction(loader_router),
-        GenericRepository: awilix.asFunction(()=>(model)=> new Generic_Repository(model))
+        GenericRepository: awilix.asValue(Generic_Repository)
     })
 
 }

@@ -2,23 +2,26 @@ class Services_User{
     constructor({UtilityContext}){
         this.UtilityContext=UtilityContext
     }
-   async register_user(result){
-    //    console.log("-------------UtilityContext222222222222222:",await this.UtilityContext.user().find({}));
-       
-        let user=await this.UtilityContext.user().Insert(result)
+   async register_user(Data){
+        let user=await this.UtilityContext.User().Insert(Data)
         return user
     }
 
-    delete_user(){
-
+    async delete_user(Condition){
+        let user=await this.UtilityContext.User().delete(Condition)
+        return user
     }
 
-    update_user(){
-
+    async update_user(Data){
+        let user=await this.UtilityContext.User().update({id:Data.id},Data)
+        return user
     }
 
-    getall_user(){
-
+    async getall_user(Condition={}){
+        let user=await this.UtilityContext.User().find(Condition)
+        
+        // console.log("2222222222222************22222222222:",await this.UtilityContext.user)
+        return user
     }
 }
 module.exports=Services_User
