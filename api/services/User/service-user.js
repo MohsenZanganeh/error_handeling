@@ -3,7 +3,9 @@ class Services_User{
         this.UtilityContext=UtilityContext
     }
    async register_user(result){
-        let user=await this.UtilityContext.User().Insert(result)
+    //    console.log("-------------UtilityContext222222222222222:",await this.UtilityContext.user().find({}));
+       
+        let user=await this.UtilityContext.user().Insert(result)
         return user
     }
 

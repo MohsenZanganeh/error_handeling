@@ -3,7 +3,6 @@ let bind=require("auto-bind")
 
 class validator_user{
     constructor(){
-        console.log("validator -----------------------")
         bind(this)
     }
     register_user(req,res){

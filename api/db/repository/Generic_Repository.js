@@ -6,7 +6,7 @@ class Generic_Repository{
         //let newData = this.SetDateNow(Data)
         let newModel = new this.model(Data)
         await newModel.save()
-        return status.OK
+        return "status.OK"
     }
     // SetDateNow(Data) {
     //     let DateNow = Date.No
@@ -35,7 +35,7 @@ class Generic_Repository{
             return status.NO_CONTENT
         }
     }
-    async find(){
+    async find(Condition={}){
         let result = await this.model.find(Condition)
         if (result.length > 0) {
             return result

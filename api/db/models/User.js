@@ -1,5 +1,3 @@
-const { Mongoose } = require("mongoose");
-
 let mongoose=require("mongoose")
 let user=mongoose.Schema({
     name:{
@@ -17,5 +15,5 @@ let user=mongoose.Schema({
         require:true
     }
 })
-let user_model=mongoose.model("User",user)
+let user_model=mongoose.model("user",user)
 module.exports=user_model
