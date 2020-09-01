@@ -1,0 +1,30 @@
+openapi: 3.0.0
+
+info:
+  title: first swagger
+  version: 1.0.0
+  
+host: localhost:3000
+basePath: /
+consumes:
+  - application/json
+produces: 
+  - application/json
+
+paths: 
+  /register:
+    post:
+      summary: Returns
+      description: Optional
+      content:
+         schema:
+          type: object
+          properties:
+            usename:
+              type: integer
+              format: json
+              example: "aaaaaaaaaa252528525"
+            name:
+              type: string
+              format: json
+              example: "aaaaaaaaaaaaa"

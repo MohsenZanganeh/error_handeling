@@ -1,4 +1,4 @@
-const awilix = require('awilix')
+const awilix = require("awilix")
 const Generic_Repository = require("./api/db/repository/Generic_Repository")
 const Utility_Context = require("./api/db/context/Utility_Context")
 let user_service = require("./api/services/User/service-user");
@@ -6,7 +6,7 @@ let user_controller = require("./api/services/User/controller-user");
 let user_validator = require("./api/services/User/validator-user")
 let roter_user = require("./api/services/User/roter-user")
 let loader_router = require("./api/Routes/Router_loader")
-let app=require("./api/index");
+let app = require("./api/index");
 const container = awilix.createContainer({
     injectionMode: awilix.InjectionMode.PROXY
 })
