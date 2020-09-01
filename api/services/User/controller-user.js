@@ -5,7 +5,7 @@ class Controller_User {
         this.user_validator=user_validator
         this.user_service=user_service
     }
-   async register_user(req, res) {
+    async register_user(req, res) {
         let result =await this.user_validator.register_user(req, res)
         if (result) {
             let user =await this.user_service.register_user(result)
@@ -13,8 +13,8 @@ class Controller_User {
         }
     }
 
-   async delete_user(req, res) {
-          let result = await this.user_validator.delete_user(req, res)
+    async delete_user(req, res) {
+        let result = await this.user_validator.delete_user(req, res)
         if (result) {
             let user = await this.user_service.delete_user(result)
             res.send(user);
